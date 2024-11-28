@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+}
+
+.organization-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #0056b3;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userEmail {
+  font-size: 14px;
+  color: white;
+}
+
+.userProfile{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+}
+
+.search-input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 100vh;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.recipe-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+  background-color: #f0f0f0;
+}
+
+.favorite-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.favorite-button:hover {
+  background-color: #0056b3;
+}
