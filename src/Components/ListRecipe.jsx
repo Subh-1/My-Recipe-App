@@ -33,19 +33,21 @@ const ListRecipe =  ({ recipes, searchQuery }) => {
             </div>
             <button
               className="favorite-button"
-              onClick={() => handleAddToFavorites(recipe)}
+              onClick={(e) =>{ 
+                e.stopPropagation();
+                handleAddToFavorites(recipe)}}
             >
               Add to Favorite
             </button>
           </div>
         ))}
       </div>
-      <h3>Favorites:</h3>
+      {/* <h3>Favorites:</h3>
       <ul>
         {favorites.map((favorite, idx) => (
           <li key={idx}>{favorite["Recipe Name"]}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Home from "./Components/Home";
 import SignupForm from "./Components/SignupForm";
 import ListRecipe from "./Components/ListRecipe";
-import RecipeDetails from "./Components/RecipeDetails"
+import RecipeDetails from "./Components/RecipeDetails";
+import FavoriteList from "./Components/FavoriteList";
+
 
 const App = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/recipe" element={<ListRecipe />} />
         <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
         <Route path="/recipe-details/:id" element={<RecipeDetails />} />
+        <Route path="/favorite" element={<FavoriteList />} />
       </Routes>
     </Router>
   );

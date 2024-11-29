@@ -23,10 +23,8 @@ const Navbar =  ({ onSearch }) => {
   //   navigate("/login");
   // };
 
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    onSearch(query); // Pass the search query to the parent
+  const handleSearch = () => {
+    onSearch(searchQuery);
   };
 
   return (
@@ -36,19 +34,23 @@ const Navbar =  ({ onSearch }) => {
       </div>
       <div className="midnav">
       <input
-              type="text"
-              className="search-bar"
-              placeholder="Search recipes..."
-              value={searchQuery}
-              onChange={handleSearch}
-            />
+            type="text"
+            className="search-bar"
+            placeholder="Search recipes..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="search-button" onClick={handleSearch}>
+            Search
+          </button>
+      
       </div>
       <div className="navbarRight">
         <Link to="/" className="nav-link">
           Home
         </Link>
-        <Link to="/recipe" className="nav-link">
-          RecipeList
+        <Link to="/favorite" className="nav-link">
+          Favorite Recipe
         </Link>
         {currentUser && (
           <div className="userSection">

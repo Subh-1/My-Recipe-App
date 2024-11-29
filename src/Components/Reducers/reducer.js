@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import { SET_USER, CLEAR_USER } from "../Actions/action";
 
-// Initial state for the user
 const initialUserState = {
   name: null,
   email: null,

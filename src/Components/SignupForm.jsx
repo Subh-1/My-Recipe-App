@@ -30,7 +30,7 @@ const SignUpForm = () => {
 
     const newUser = { name, email, password };
     
-    // Dispatch the setUser action to update the Redux store
+
     dispatch(setUser(newUser));
 
     // Optionally, store users in localStorage (if you need to persist them)
