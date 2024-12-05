@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles/Navbar.css";
 
-const Navbar =  ({ onSearch }) => {
+const Navbar = ({ onSearch }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -33,17 +33,16 @@ const Navbar =  ({ onSearch }) => {
         <h1 className="organizationName">Your Recipe</h1>
       </div>
       <div className="midnav">
-      <input
-            type="text"
-            className="search-bar"
-            placeholder="Search recipes..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="search-button" onClick={handleSearch}>
-            Search
-          </button>
-      
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search recipes..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className="search-button" onClick={handleSearch}>
+          Search
+        </button>
       </div>
       <div className="navbarRight">
         <Link to="/" className="nav-link">
@@ -58,9 +57,25 @@ const Navbar =  ({ onSearch }) => {
               <div className="showName">{currentUser.name}</div>
               <div className="showEmail">{currentUser.email}</div>
             </span>
-            <Fab size="small" color="primary" aria-label="user">
-              <PersonIcon />
-            </Fab>
+            <div className="fabIconContainer">
+              <Fab size="small" color="primary" aria-label="user">
+                <PersonIcon />
+              </Fab>
+            </div>
+            <div className="hidden">
+              <ul>
+                <li>
+                  <a href="/createRecipe">Create Recipe</a>
+                </li>
+                <li>
+                  <a href="#link2">My Recipes</a>
+                </li>
+                <li>
+                  <a href="#link3">Shared Recipes</a>
+                </li>
+              </ul>
+            </div>
+
             <button className="hideLogout" onClick={clearUser}>
               Logout
             </button>

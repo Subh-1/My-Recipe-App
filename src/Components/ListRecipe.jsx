@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { deleteItem } from "./DeleteItem";
 import "./styles/ListRecipe.css";
 
-const ListRecipe =  ({ recipes, searchQuery }) => {
+const ListRecipe =  ({ recipes, setRecipes, searchQuery }) => {
   const [favorites, setFavorites] = useState([]);
 
   const navigate = useNavigate();
@@ -15,8 +16,12 @@ const ListRecipe =  ({ recipes, searchQuery }) => {
     navigate(`/recipe-details/${index}`, { state: { recipe } });
   };
 
+  const handleDelete = (id) => {
+    deleteItem(id, recipes, setRecipes); // Call deleteItem with the recipe id
+  };
+
   const filteredRecipes = recipes.filter((recipe) =>
-    recipe["Recipe Name"].toLowerCase().includes(searchQuery.toLowerCase())
+    recipe["recipeName"].toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -26,10 +31,10 @@ const ListRecipe =  ({ recipes, searchQuery }) => {
         {filteredRecipes.map((recipe, index) => (
           <div key={index} className="recipe-card" onClick={() => handleCardClick(recipe, index)}>
             <div className="recipe-field">
-              <strong>Recipe Name:</strong> {recipe["Recipe Name"]}
+              <strong>Recipe Name:</strong> {recipe["recipeName"]}
             </div>
             <div className="recipe-field">
-              <strong>Cuisine:</strong> {recipe["Cuisine Type"]}
+              <strong>Cuisine:</strong> {recipe["cuisineType"]}
             </div>
             <button
               className="favorite-button"
@@ -38,6 +43,15 @@ const ListRecipe =  ({ recipes, searchQuery }) => {
                 handleAddToFavorites(recipe)}}
             >
               Add to Favorite
+            </button>
+            <button
+              className="delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(recipe.id);
+              }}
+            >
+              Delete
             </button>
           </div>
         ))}

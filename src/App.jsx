@@ -7,7 +7,7 @@ import SignupForm from "./Components/SignupForm";
 import ListRecipe from "./Components/ListRecipe";
 import RecipeDetails from "./Components/RecipeDetails";
 import FavoriteList from "./Components/FavoriteList";
-
+import CreateRecipe from "./Components/CreateRecipe"
 
 const App = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -15,7 +15,6 @@ const App = () => {
   return (
     <Router>
       <Routes>
-     
         <Route
           path="/"
           element={isLoggedIn ? <Navigate to="/home" /> : <LoginForm />}
@@ -27,6 +26,7 @@ const App = () => {
         <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
         <Route path="/recipe-details/:id" element={<RecipeDetails />} />
         <Route path="/favorite" element={<FavoriteList />} />
+        <Route path="/createRecipe" element={<CreateRecipe />} />
       </Routes>
     </Router>
   );

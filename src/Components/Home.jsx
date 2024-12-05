@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
-      <ListRecipe recipes={recipes} searchQuery={searchQuery}/> {/* Pass recipes as a prop */}
+      <ListRecipe recipes={recipes} setRecipes={setRecipes} searchQuery={searchQuery}/> {/* Pass recipes as a prop */}
     </div>
   );
 };
