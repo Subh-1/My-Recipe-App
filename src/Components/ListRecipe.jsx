@@ -7,10 +7,26 @@ const ListRecipe =  ({ recipes, setRecipes, searchQuery }) => {
   const [favorites, setFavorites] = useState([]);
 
   const navigate = useNavigate();
+  
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const handleAddToFavorites = (recipe) => {
-    setFavorites((prevFavorites) => [...prevFavorites, recipe]);
+    if (!currentUser) {
+      alert("You must be logged in to add to favorites.");
+      return;
+    }
+
+    // Get the current favorites from localStorage, or initialize an empty array
+    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`)) || [];
+
+    // If the recipe is not already in favorites, add it
+    if (!storedFavorites.some((item) => item.id === recipe.id)) {
+      const updatedFavorites = [...storedFavorites, recipe];
+      localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(updatedFavorites));
+      setFavorites(updatedFavorites);
+    }
   };
+
 
   const handleCardClick = (recipe, index) => {
     navigate(`/recipe-details/${index}`, { state: { recipe } });
@@ -56,12 +72,6 @@ const ListRecipe =  ({ recipes, setRecipes, searchQuery }) => {
           </div>
         ))}
       </div>
-      {/* <h3>Favorites:</h3>
-      <ul>
-        {favorites.map((favorite, idx) => (
-          <li key={idx}>{favorite["Recipe Name"]}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };

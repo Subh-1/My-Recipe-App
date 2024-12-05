@@ -68,7 +68,7 @@ const Navbar = ({ onSearch }) => {
                   <a href="/createRecipe">Create Recipe</a>
                 </li>
                 <li>
-                  <a href="#link2">My Recipes</a>
+                  <a href="/yourRecipe">My Recipes</a>
                 </li>
                 <li>
                   <a href="#link3">Shared Recipes</a>
