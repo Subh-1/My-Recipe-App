@@ -1,4 +1,5 @@
-const recipes = [
+ const SaveRecipes = () => {
+  const myrecipes = [
     {
       id: 1,
       recipeName: "Vegetable Stir Fry",
@@ -64,7 +65,7 @@ const recipes = [
       cuisineType: "Italian",
       image: "../images/margherita.jpg",
     },
-  
+
     {
       id: 4,
       recipeName: "Vegetable Lasagna",
@@ -150,10 +151,11 @@ const recipes = [
         "Garnish with cilantro and a squeeze of lime juice.",
       ],
       cuisineType: "Mexican",
-       image: "../images/vegan tacos.jpg"
+      image: "../images/vegan tacos.jpg",
     },
-   
   ];
-  
-localStorage.setItem("recipes", JSON.stringify(recipes));
-  
+  localStorage.removeItem("recipes");
+  localStorage.setItem("recipes", JSON.stringify(myrecipes));
+};
+
+export default SaveRecipes;

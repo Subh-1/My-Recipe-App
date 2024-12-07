@@ -22,13 +22,13 @@ const RecipeDetails = () => {
       <div className="recipe-section">
         <h4>Ingredients</h4>
         <ul className="ingredient-list">
-          {Array.isArray(recipe.ingredients) ? (
-            recipe.ingredients.map((ingredient, idx) => (
-              <li key={idx}>{ingredient}</li>
-            ))
-          ) : (
-            <li>{recipe.ingredients}</li>
-          )}
+        {Array.isArray(recipe.Ingredients) ? (
+        recipe.Ingredients.map((ingredient, idx) => {
+          return <li key={idx}>{ingredient}</li>;
+        })
+      ) : (
+        <li>No ingredients found</li>
+      )}
         </ul>
         <h3>Cooking Instructions:</h3>
         <p>{recipe.cookingInstructions}</p>

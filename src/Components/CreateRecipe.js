@@ -1,32 +1,43 @@
 import React, { useState } from "react";
-import "./styles/CreateRecipe.css"; 
+import "./styles/CreateRecipe.css";
 import { useNavigate } from "react-router-dom";
 
 const CreateRecipe = () => {
   const [recipeName, setRecipeName] = useState("");
-  const [ingredients, setIngredients] = useState("");
+  const [Ingredients, setIngredients] = useState(""); // Ingredients as string
   const [cookingInstructions, setCookingInstructions] = useState("");
   const [cuisineType, setCuisineType] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
+  // Handle Submit Form
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const ingredientArray = Ingredients.split(",").map((ingredient) => ingredient.trim());
+  
     const newRecipe = {
-      id: Date.now(),  
+      id: Date.now(),
       recipeName,
-      ingredients,
+      Ingredients: ingredientArray,
       cookingInstructions,
       cuisineType,
     };
+  
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+   
+    const storedRecipes = JSON.parse(localStorage.getItem(`recipes_${currentUser.email}`)) || [];
+  
 
+    const validStoredRecipes = Array.isArray(storedRecipes) ? storedRecipes : [];
 
-    const storedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-    storedRecipes.push(newRecipe);
-    localStorage.setItem("recipes", JSON.stringify(storedRecipes));
+    const updatedRecipes = [...validStoredRecipes, newRecipe];
+
+    localStorage.setItem(`recipes_${currentUser.email}`, JSON.stringify(updatedRecipes));
 
     navigate("/home");
   };
+  
 
   return (
     <div className="form-container">
@@ -42,8 +53,8 @@ const CreateRecipe = () => {
         />
         <textarea
           className="textarea"
-          placeholder="Ingredients"
-          value={ingredients}
+          placeholder="Ingredients (separate with commas)"
+          value={Ingredients}
           onChange={(e) => setIngredients(e.target.value)}
           required
         />
