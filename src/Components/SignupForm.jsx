@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";  // Import useDispatch to dispatch actions
-import { setUser } from "./Actions/action";  // Import the setUser action
+import { useDispatch } from "react-redux";  
+import { setUser } from "./Actions/action"; 
 import "./styles/signup.css";
 import "./styles/common.css";
 
@@ -10,7 +10,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const dispatch = useDispatch();  // Initialize dispatch
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -21,7 +21,6 @@ const SignUpForm = () => {
       return;
     }
 
-    // Check if user already exists in the store
     const users = JSON.parse(localStorage.getItem("users")) || [];
     if (users.some((user) => user.email === email)) {
       alert("Email already in use");
@@ -33,7 +32,6 @@ const SignUpForm = () => {
 
     dispatch(setUser(newUser));
 
-    // Optionally, store users in localStorage (if you need to persist them)
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 

@@ -6,14 +6,12 @@ import SaveRecipes from "./SaveRecipes"
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
 
-
-  // Load recipes from localStorage when the component mounts
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
     if (storedRecipes) {
-      setRecipes(JSON.parse(storedRecipes)); // Parse and set the recipes from localStorage
+      setRecipes(JSON.parse(storedRecipes)); 
     }
   }, []);
   const [yourRecipe, setYourRecipe] = useState(() => {

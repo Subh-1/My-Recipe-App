@@ -25,7 +25,6 @@ const userReducer = (state = savedUser || initialUserState, action) => {
   }
 };
 
-// Root reducer
 const rootReducer = combineReducers({
   user: userReducer,
 });

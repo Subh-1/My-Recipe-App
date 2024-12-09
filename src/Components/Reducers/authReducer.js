@@ -1,6 +1,6 @@
 const initialState = {
     isLoggedIn: false,
-    currentUser: null, // Stores the user details (e.g., name, email)
+    currentUser: null, 
   };
   
   const authReducer = (state = initialState, action) => {
