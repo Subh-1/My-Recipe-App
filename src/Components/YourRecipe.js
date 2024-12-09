@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const YourRecipe = () => {
   const [favorites, setFavorites] = useState([]);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-console.log(currentUser);
+
   useEffect(() => {
     if (currentUser) {
       const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.email}`)) || [];
