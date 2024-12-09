@@ -28,3 +28,9 @@
     margin-top: 60vh;
     display: flex;
   }
+
+  .favorite-recipes{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }

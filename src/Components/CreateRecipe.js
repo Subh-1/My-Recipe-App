@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import "./styles/CreateRecipe.css";
 import { useNavigate } from "react-router-dom";
+
+import "./styles/CreateRecipe.css";
 
 const CreateRecipe = () => {
   const [recipeName, setRecipeName] = useState("");
-  const [Ingredients, setIngredients] = useState(""); // Ingredients as string
+  const [Ingredients, setIngredients] = useState("");
   const [cookingInstructions, setCookingInstructions] = useState("");
   const [cuisineType, setCuisineType] = useState("");
   const navigate = useNavigate();
 
-  // Handle Submit Form
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const ingredientArray = Ingredients.split(",").map((ingredient) => ingredient.trim());
-  
+    const ingredientArray = Ingredients.split(",").map((ingredient) =>
+      ingredient.trim()
+    );
+
     const newRecipe = {
       id: Date.now(),
       recipeName,
@@ -22,26 +24,29 @@ const CreateRecipe = () => {
       cookingInstructions,
       cuisineType,
     };
-  
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  
-   
-    const storedRecipes = JSON.parse(localStorage.getItem(`recipes_${currentUser.email}`)) || [];
-  
 
-    const validStoredRecipes = Array.isArray(storedRecipes) ? storedRecipes : [];
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    const storedRecipes =
+      JSON.parse(localStorage.getItem(`recipes_${currentUser.email}`)) || [];
+
+    const validStoredRecipes = Array.isArray(storedRecipes)
+      ? storedRecipes
+      : [];
 
     const updatedRecipes = [...validStoredRecipes, newRecipe];
 
-    localStorage.setItem(`recipes_${currentUser.email}`, JSON.stringify(updatedRecipes));
+    localStorage.setItem(
+      `recipes_${currentUser.email}`,
+      JSON.stringify(updatedRecipes)
+    );
 
     navigate("/home");
   };
-  
 
   return (
-    <div className="form-container">
-      <h2 className="form-title">Create Recipe</h2>
+    <div className="formContainer">
+      <h2 className="formTitle">Create Recipe</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -73,9 +78,13 @@ const CreateRecipe = () => {
           onChange={(e) => setCuisineType(e.target.value)}
           required
         />
-        <button type="submit" className="button">Submit Recipe</button>
+        <button type="submit" className="button">
+          Submit Recipe
+        </button>
       </form>
-      <a href="/home" className="back-link">Back to Home</a>
+      <a href="/home" className="back-link">
+        Back to Home
+      </a>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./styles/common.css"
 
 const YourRecipe = () => {
   const [favorites, setFavorites] = useState([]);
@@ -6,7 +7,9 @@ const YourRecipe = () => {
 
   useEffect(() => {
     if (currentUser) {
-      const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.email}`)) || [];
+      const storedFavorites =
+        JSON.parse(localStorage.getItem(`favorites_${currentUser.email}`)) ||
+        [];
       setFavorites(storedFavorites);
     }
   }, [currentUser]);

@@ -30,7 +30,7 @@ const Navbar = ({ onSearch }) => {
   const getMenuClass = () => {
     return `menusHidden ${menuVisible ? "active" : ""}`;
   };
-  
+
   return (
     <nav className="navbar">
       <div className="navbarLeft">
@@ -77,32 +77,38 @@ const Navbar = ({ onSearch }) => {
         className="fa fa-bars"
         onClick={toggleMenu}
       ></i>
-    <div>
-      <div className={getMenuClass()}>
-        <div className="mobileView">
-        <Fab size="small" color="primary" aria-label="user" className="personIcon">
-          <PersonIcon />
-        </Fab>
-        {currentUser && (
-          <div className="userSection">
-            <span className="SmallUserProfile">
-              <div>{currentUser.name}</div>
-              <div>{currentUser.email}</div>
-            </span>
-          </div>)}
+      <div>
+        <div className={getMenuClass()}>
+          <div className="mobileView">
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="user"
+              className="personIcon"
+            >
+              <PersonIcon />
+            </Fab>
+            {currentUser && (
+              <div className="userSection">
+                <span className="SmallUserProfile">
+                  <div>{currentUser.name}</div>
+                  <div>{currentUser.email}</div>
+                </span>
+              </div>
+            )}
           </div>
           <button className="mobileLogout" onClick={clearUser}>
-              Logout
-            </button>
-        <div className="menuContainer">
-          <Link to="/createRecipe" className="nav-link">
-            Create Recipe
-          </Link>
-          <Link to="/yourRecipe" className="nav-link">
-            My Recipes
-          </Link>
+            Logout
+          </button>
+          <div className="menuContainer">
+            <Link to="/createRecipe" className="nav-link">
+              Create Recipe
+            </Link>
+            <Link to="/yourRecipe" className="nav-link">
+              My Recipes
+            </Link>
+          </div>
         </div>
-      </div>
       </div>
     </nav>
   );

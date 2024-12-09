@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import ListRecipe from "./ListRecipe";
-import SaveRecipes from "./SaveRecipes"
+import SaveRecipes from "./SaveRecipes";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -11,16 +11,18 @@ const Home = () => {
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
     if (storedRecipes) {
-      setRecipes(JSON.parse(storedRecipes)); 
+      setRecipes(JSON.parse(storedRecipes));
     }
   }, []);
   const [yourRecipe, setYourRecipe] = useState(() => {
     if (currentUser) {
-      const getYourRecipe = localStorage.getItem(`recipes_${currentUser.email}`);
+      const getYourRecipe = localStorage.getItem(
+        `recipes_${currentUser.email}`
+      );
       return getYourRecipe ? JSON.parse(getYourRecipe) : [];
     }
     return [];
-  })
+  });
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -31,8 +33,14 @@ const Home = () => {
   return (
     <div>
       <Navbar onSearch={handleSearch} />
-      <SaveRecipes/>
-      <ListRecipe recipes={recipes} setRecipes={setRecipes} searchQuery={searchQuery} yourRecipe={yourRecipe} setYourRecipe={setYourRecipe}/> {/* Pass recipes as a prop */}
+      <SaveRecipes />
+      <ListRecipe
+        recipes={recipes}
+        setRecipes={setRecipes}
+        searchQuery={searchQuery}
+        yourRecipe={yourRecipe}
+        setYourRecipe={setYourRecipe}
+      />{" "}
     </div>
   );
 };
