@@ -6,7 +6,6 @@ import Home from "./Components/Home";
 import SignupForm from "./Components/SignupForm";
 import ListRecipe from "./Components/ListRecipe";
 import RecipeDetails from "./Components/RecipeDetails";
-import FavoriteList from "./Components/FavoriteList";
 import CreateRecipe from "./Components/CreateRecipe"
 import YourRecipe from "./Components/YourRecipe";
 
@@ -26,7 +25,6 @@ const App = () => {
         <Route path="/recipe" element={<ListRecipe />} />
         <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
         <Route path="/recipe-details/:id" element={<RecipeDetails />} />
-        <Route path="/favorite" element={<FavoriteList />} />
         <Route path="/createRecipe" element={<CreateRecipe />} />
         <Route path="/yourRecipe" element={<YourRecipe />} />
       </Routes>
